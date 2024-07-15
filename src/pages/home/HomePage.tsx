@@ -1,7 +1,7 @@
 export default function HomePage() {
   return (
     <main>
-      <h1>Home page</h1>
+      <CodeSnippet content={"adwhdawudawhidawhi"} />
     </main>
   );
 }
