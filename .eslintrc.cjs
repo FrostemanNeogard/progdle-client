@@ -14,5 +14,10 @@ module.exports = {
       "warn",
       { allowConstantExport: true },
     ],
+    semi: [2, "always"],
+    quotes: [2, "double"],
+    "max-len": [2, { code: 80 }],
+    indent: ["error", 2],
+    "comma-dangle": ["error", "always-multiline"],
   },
 };
