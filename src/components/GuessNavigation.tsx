@@ -1,8 +1,10 @@
+import * as S from "./GuessNavigation.styled";
+
 export default function GuessNavigation() {
   return (
-    <nav>
+    <S.NavBar>
       <button>Prev</button>
       <button>Next</button>
-    </nav>
+    </S.NavBar>
   );
 }
