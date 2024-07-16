@@ -25,5 +25,5 @@ export const Title = styled.h1`
 export const ProfilePicture = styled.img`
   border-radius: 100%;
   height: 100px;
-  aspect-ration: 1/1;
+  aspect-ratio: 1/1;
 `;
