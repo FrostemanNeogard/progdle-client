@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CodeSnippet from "../../components/CodeSnippet";
 import GuessInputBar from "../../components/GuessInputBar";
 import GuessTable from "../../components/GuessTable";
 import GuessNavigation from "../../components/GuessNavigation";
 import { Guess } from "../../types/Guess";
 import * as S from "./HomePage.styled";
+import useWindowDimensions from "../../hooks/WindowDimensions";
 
 export default function HomePage() {
-  const [isMobile, setIsMobile] = useState<boolean>(true);
+  const { width } = useWindowDimensions();
+  const [isMobile, setIsMobile] = useState<boolean>(width < 768);
   const [guesses, setGuesses] = useState<Guess[]>([
     {
       releaseYear: 1990,
@@ -19,6 +21,10 @@ export default function HomePage() {
       os: "Windows",
     },
   ]);
+
+  useEffect(() => {
+    setIsMobile(width < 768);
+  }, [width]);
 
   // Temporary data setters for testing purposes
   const code = `
