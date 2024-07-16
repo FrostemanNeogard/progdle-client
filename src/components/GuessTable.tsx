@@ -3,7 +3,7 @@ import * as S from "./GuessTable.styled";
 import { GuessesContext, MobileContext } from "../pages/root/RootPage";
 
 export default function GuessTable() {
-  const { guesses, addGuess } = useContext(GuessesContext);
+  const { guesses } = useContext(GuessesContext);
   const isMobile = useContext(MobileContext);
 
   return (
