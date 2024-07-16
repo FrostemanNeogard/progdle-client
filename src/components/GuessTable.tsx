@@ -1,15 +1,11 @@
-import React, { useContext, useState } from "react";
-import { Guess } from "../types/Guess";
+import React, { useContext } from "react";
 import * as S from "./GuessTable.styled";
-import { MobileContext } from "../pages/root/RootPage";
+import { GuessesContext, MobileContext } from "../pages/root/RootPage";
 
-type GuessTableProps = {
-  guessData: Guess[];
-};
-export default function GuessTable({ guessData }: GuessTableProps) {
-  const [guesses, setGuesses] = useState<Guess[]>(guessData);
+export default function GuessTable() {
+  const { guesses, addGuess } = useContext(GuessesContext);
   const isMobile = useContext(MobileContext);
-  
+
   return (
     <S.GuessTable>
       {!isMobile && (
@@ -25,7 +21,7 @@ export default function GuessTable({ guessData }: GuessTableProps) {
           </tr>
         </thead>
       )}
-      {guesses.map((guess, index) => (
+      {guesses?.map((guess, index) => (
         <React.Fragment key={index}>
           {isMobile && (
             <>
