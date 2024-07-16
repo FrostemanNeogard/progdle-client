@@ -11,6 +11,7 @@ export default function HomePage() {
   const [guesses, setGuesses] = useState<Guess[]>([
     {
       releaseYear: 1990,
+      language: "JavaScript",
       paradigm: "Multi-Paradigm",
       typing: "Weak, Dynamic",
       domain: "Web",
@@ -47,8 +48,8 @@ for (let i = 0; i < 10; i++) {
       <S.InstructionHeading>
         Guess the Programming Language
       </S.InstructionHeading>
-      <S.GuessCount>Guesses: {0}/5</S.GuessCount>
       <CodeSnippet content={code} />
+      <S.GuessCount>Guesses: {0}/5</S.GuessCount>
       <GuessTable guessData={guesses} />
       {isMobile && <GuessNavigation />}
       <GuessInputBar setter={makeGuess} />
