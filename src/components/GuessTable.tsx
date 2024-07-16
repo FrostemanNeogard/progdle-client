@@ -14,20 +14,24 @@ export default function GuessTable({ guessData }: GuessTableProps) {
       {guesses.map((guess, index) => (
         <React.Fragment key={index}>
           {isMobile && (
-            <S.TableLanguageHeading>{guess.language}</S.TableLanguageHeading>
-          )}
-          {isMobile && (
             <thead>
               <tr>
-                {!isMobile && <th>Language</th>}
-                <th>Release Year</th>
-                <th>Paradigm</th>
-                <th>Typing</th>
-                <th>Domain</th>
-                <th>Memory safe</th>
-                <th>OS</th>
+                <th>{guess.language}</th>
               </tr>
             </thead>
+          )}
+          {isMobile && (
+            <tbody>
+              <tr>
+                {!isMobile && <td>Language</td>}
+                <td>Release Year</td>
+                <td>Paradigm</td>
+                <td>Typing</td>
+                <td>Domain</td>
+                <td>Memory safe</td>
+                <td>OS</td>
+              </tr>
+            </tbody>
           )}
           <tbody>
             <tr>

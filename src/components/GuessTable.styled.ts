@@ -9,6 +9,13 @@ export const GuessTable = styled.table`
   grid-template-rows: auto auto;
   gap: 1rem;
 
+  thead {
+    justify-self: center;
+    align-self: center;
+    grid-column: 1 / span all;
+    font-size: 2.5rem;
+  }
+
   tr {
     display: flex;
     flex-direction: column;
@@ -21,11 +28,4 @@ export const GuessTable = styled.table`
       text-align: center;
     }
   }
-`;
-
-export const TableLanguageHeading = styled.h1`
-  justify-self: center;
-  align-self: center;
-  grid-column: 1 / span all;
-  font-size: 2.5rem;
 `;
