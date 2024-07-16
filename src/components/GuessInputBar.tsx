@@ -1,4 +1,5 @@
 import { SyntheticEvent, useState } from "react";
+import * as S from "./GuessInputBar.styled";
 
 type GuessInputBar = {
   setter: (arg0: string) => void;
@@ -13,14 +14,14 @@ export default function GuessInputBar({ setter }: GuessInputBar) {
   };
 
   return (
-    <form onSubmit={submitGuess}>
-      <input
+    <S.GuessForm onSubmit={submitGuess}>
+      <S.GuessInput
         type="text"
         placeholder="Start typing..."
         value={languageInput}
         onChange={(e) => setLanguageInput(e.target.value)}
       />
-      <button>Guess</button>
-    </form>
+      <S.GuessButton>Guess</S.GuessButton>
+    </S.GuessForm>
   );
 }
