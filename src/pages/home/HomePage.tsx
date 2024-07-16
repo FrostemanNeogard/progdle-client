@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import CodeSnippet from "../../components/CodeSnippet";
 import GuessInputBar from "../../components/GuessInputBar";
 import GuessTable from "../../components/GuessTable";
@@ -7,30 +7,16 @@ import { Guess } from "../../types/Guess";
 
 export default function HomePage() {
   const [isMobile, setIsMobile] = useState<boolean>(true);
-  const [guesses, setGuesses] = useState<Guess[]>([]);
-
-  // Temporary data setters for testing purposes
-  useEffect(() => {
-    setIsMobile(true);
-    setGuesses([
-      {
-        releaseYear: 1990,
-        paradigm: "Multi-Paradigm",
-        typing: "Weak, Dynamic",
-        domain: "Web",
-        memorySafe: false,
-        os: "Windows",
-      },
-      {
-        releaseYear: 1990,
-        paradigm: "Multi-Paradigm",
-        typing: "Weak, Dynamic",
-        domain: "Web",
-        memorySafe: false,
-        os: "Windows",
-      },
-    ]);
-  }, []);
+  const [guesses, setGuesses] = useState<Guess[]>([
+    {
+      releaseYear: 1990,
+      paradigm: "Multi-Paradigm",
+      typing: "Weak, Dynamic",
+      domain: "Web",
+      memorySafe: false,
+      os: "Windows",
+    },
+  ]);
 
   // Temporary data setters for testing purposes
   const code = `
