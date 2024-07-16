@@ -4,6 +4,7 @@ import GuessInputBar from "../../components/GuessInputBar";
 import GuessTable from "../../components/GuessTable";
 import GuessNavigation from "../../components/GuessNavigation";
 import { Guess } from "../../types/Guess";
+import * as S from "./HomePage.styled";
 
 export default function HomePage() {
   const [isMobile, setIsMobile] = useState<boolean>(true);
@@ -43,9 +44,11 @@ for (let i = 0; i < 10; i++) {
 
   return (
     <>
-      <h2>Guess the Programming Language</h2>
-      <h1>Guesses: {0}/5</h1>
-      <CodeSnippet content={code} />;
+      <S.InstructionHeading>
+        Guess the Programming Language
+      </S.InstructionHeading>
+      <S.GuessCount>Guesses: {0}/5</S.GuessCount>
+      <CodeSnippet content={code} />
       <GuessTable guessData={guesses} />
       {isMobile && <GuessNavigation />}
       <GuessInputBar setter={makeGuess} />
