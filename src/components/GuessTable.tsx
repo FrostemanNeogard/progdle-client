@@ -1,20 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Guess } from "../types/Guess";
 import * as S from "./GuessTable.styled";
-import useWindowDimensions from "../hooks/WindowDimensions";
+import { MobileContext } from "../pages/root/RootPage";
 
 type GuessTableProps = {
   guessData: Guess[];
 };
 export default function GuessTable({ guessData }: GuessTableProps) {
-  const { width } = useWindowDimensions();
   const [guesses, setGuesses] = useState<Guess[]>(guessData);
-  const [isMobile, setIsMobile] = useState<boolean>(width < 768);
-
-  useEffect(() => {
-    setIsMobile(width < 768);
-  }, [width]);
-
+  const isMobile = useContext(MobileContext);
+  
   return (
     <S.GuessTable>
       {!isMobile && (
