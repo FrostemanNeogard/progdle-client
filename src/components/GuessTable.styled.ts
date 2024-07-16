@@ -6,8 +6,10 @@ export const GuessTable = styled.table`
   display: grid;
   grid-auto-flow: column;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto;
-  gap: 1rem;
+  grid-template-rows: auto 1fr;
+  row-gap: 1rem;
+  height: auto;
+  flex: 1;
 
   thead {
     justify-self: center;
@@ -16,16 +18,27 @@ export const GuessTable = styled.table`
     font-size: 2.5rem;
   }
 
-  tr {
-    display: flex;
-    flex-direction: column;
-    th {
-      justify-self: flex-start;
-      text-align: left;
+  tbody {
+    tr {
+      display: flex;
+      flex-direction: column;
+      font-size: 1.5rem;
+      row-gap: 1rem;
+
+      td {
+        text-align: center;
+        padding: 0.5rem 1rem;
+        background-color: ${(props) => props.theme.colors.success};
+        color: ${(props) => props.theme.colors.tx.secondary};
+      }
     }
 
-    td {
-      text-align: center;
+    &:first-of-type {
+      td {
+        text-align: left;
+        background-color: unset;
+        color: unset;
+      }
     }
   }
 `;
