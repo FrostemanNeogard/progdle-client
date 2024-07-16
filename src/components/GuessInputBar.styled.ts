@@ -1,14 +1,19 @@
 import styled from "styled-components";
 
 export const GuessForm = styled.form`
-  margin-top: auto;
   display: flex;
   width: 100%;
   justify-content: space-between;
+  column-gap: 1rem;
+
+  input,
+  button {
+    font-size: 2rem;
+  }
 `;
 
 export const GuessInput = styled.input`
-  width: 65%;
+  flex: 1;
   background-color: ${(props) => props.theme.colors.bg.white};
   border-radius: 9999px;
   padding: 0.5rem 1rem;
