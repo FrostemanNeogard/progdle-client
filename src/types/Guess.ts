@@ -1,4 +1,5 @@
 export type Guess = {
+  language: string;
   releaseYear: number;
   paradigm: string;
   typing: string;
