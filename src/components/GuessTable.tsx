@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Guess } from "../types/Guess";
 import * as S from "./GuessTable.styled";
 
@@ -11,8 +11,8 @@ export default function GuessTable({ guessData }: GuessTableProps) {
 
   return (
     <S.GuessTable>
-      {guesses.map((guess) => (
-        <>
+      {guesses.map((guess, index) => (
+        <React.Fragment key={index}>
           {isMobile && (
             <thead>
               <tr>
@@ -37,7 +37,7 @@ export default function GuessTable({ guessData }: GuessTableProps) {
               <td>{guess.os}</td>
             </tr>
           </tbody>
-        </>
+        </React.Fragment>
       ))}
     </S.GuessTable>
   );
