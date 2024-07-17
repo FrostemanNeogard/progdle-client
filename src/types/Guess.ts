@@ -1,9 +1,10 @@
+type GuessState = "CORRECT" | "INCORRECT" | "PARTIAL";
 export type Guess = {
-  language: string;
-  releaseYear: number;
-  paradigm: string;
-  typing: string;
-  domain: string;
-  memorySafe: boolean;
-  os: string;
+  language: GuessState;
+  releaseYear: GuessState;
+  paradigm: GuessState;
+  typing: GuessState;
+  domain: GuessState;
+  memorySafe: GuessState;
+  os: GuessState;
 };
