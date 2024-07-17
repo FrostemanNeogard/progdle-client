@@ -45,13 +45,15 @@ export default function GuessTable() {
           )}
           <tbody>
             <tr>
-              {!isMobile && <td>{guess.language ?? null}</td>}
-              <td>{guess.releaseYear}</td>
-              <td>{guess.paradigm}</td>
-              <td>{guess.typing}</td>
-              <td>{guess.domain}</td>
-              <td>{guess.memorySafe ? "Yes" : "No"}</td>
-              <td>{guess.os}</td>
+              {!isMobile && <td>{guess.language}</td>}
+              <td className={guess.releaseYear}>{guess.releaseYear}</td>
+              <td className={guess.paradigm}>{guess.paradigm}</td>
+              <td className={guess.typing}>{guess.typing}</td>
+              <td className={guess.domain}>{guess.domain}</td>
+              <td className={guess.memorySafe}>
+                {guess.memorySafe ? "Yes" : "No"}
+              </td>
+              <td className={guess.os}>{guess.os}</td>
             </tr>
           </tbody>
         </React.Fragment>
