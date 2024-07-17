@@ -1,6 +1,7 @@
 export const theme = {
   breakpoints: {
-    md: "768px",
+    mobile: "768px",
+    tablet: "1024px",
   },
   colors: {
     success: "#48ff38",
