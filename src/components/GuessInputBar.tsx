@@ -20,7 +20,6 @@ export default function GuessInputBar() {
 
   const submitGuess = (e: SyntheticEvent) => {
     e.preventDefault();
-    // TODO: Why doesn't this work?
     setLanguageInput("");
     mutate(languageInput);
   };
