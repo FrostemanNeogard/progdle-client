@@ -9,7 +9,7 @@ export default function GuessInputBar() {
   const [languageInput, setLanguageInput] = useState<string>("");
   const { addGuess } = useContext(GuessesContext);
 
-  const { isPending, data, mutate } = useMutation({
+  const { isPending, mutate } = useMutation({
     mutationFn: (guess: string) => {
       return axios.get("http://localhost:8080/api/guess/" + guess);
     },
@@ -20,6 +20,8 @@ export default function GuessInputBar() {
 
   const submitGuess = (e: SyntheticEvent) => {
     e.preventDefault();
+    // TODO: Why doesn't this work?
+    setLanguageInput("");
     mutate(languageInput);
   };
 
