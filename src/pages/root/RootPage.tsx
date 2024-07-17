@@ -11,8 +11,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 export const MobileContext = createContext<boolean>(true);
 export const GuessesContext = createContext<{
   guesses: Guess[];
-  addGuess?: (arg0: Guess) => void;
-}>({ guesses: [] });
+  addGuess: (arg0: Guess) => void;
+}>({ guesses: [], addGuess: () => {}});
 
 const queryClient = new QueryClient();
 
