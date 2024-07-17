@@ -18,7 +18,7 @@ const queryClient = new QueryClient();
 
 export default function RootPage() {
   const { width } = useWindowDimensions();
-  const [isMobile, setIsMobile] = useState<boolean>(width < 1024)
+  const [isMobile, setIsMobile] = useState<boolean>(width < 1024);
   const [guesses, setGuesses] = useState<Guess[]>([]);
 
   useEffect(() => {
