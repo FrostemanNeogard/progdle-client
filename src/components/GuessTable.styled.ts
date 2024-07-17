@@ -24,19 +24,41 @@ export const GuessTable = styled.table`
   height: auto;
   flex: 1;
 
+  @media (width >= ${(props) => props.theme.breakpoints.tablet}) {
+    display: grid;
+    grid-auto-flow: row;
+
+    thead {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      grid-column: 1 / span all;
+    }
+  }
+
   thead {
     justify-self: center;
     align-self: center;
-    grid-column: 1 / span all;
     font-size: 2.5rem;
   }
 
   tbody {
+    @media (width >= ${(props) => props.theme.breakpoints.tablet}) {
+      display: grid;
+      grid-auto-flow: column;
+      grid-template-columns: repeat(7, 1fr);
+    }
+
     tr {
       display: flex;
       flex-direction: column;
       font-size: 1.5rem;
       row-gap: 1rem;
+
+      @media (width >= ${(props) => props.theme.breakpoints.tablet}) {
+        display: grid;
+        grid-column: 1 / span all;
+        grid-auto-flow: column;
+      }
 
       td {
         text-align: center;
@@ -55,11 +77,13 @@ export const GuessTable = styled.table`
       }
     }
 
-    &:first-of-type {
-      td {
-        text-align: left;
-        background-color: unset;
-        color: unset;
+    @media (width < ${(props) => props.theme.breakpoints.tablet}) {
+      &:first-of-type {
+        td {
+          text-align: left;
+          background-color: unset;
+          color: unset;
+        }
       }
     }
   }
