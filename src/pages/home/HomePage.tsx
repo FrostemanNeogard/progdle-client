@@ -10,19 +10,12 @@ export default function HomePage() {
   const isMobile = useContext(MobileContext);
   const { guesses } = useContext(GuessesContext);
 
-  // Temporary data setters for testing purposes
-  const code = `
-for (let i = 0; i < 10; i++) {
-    console.log("hello");
-}
-    `;
-
   return (
     <>
       <S.InstructionHeading>
         Guess the Programming Language
       </S.InstructionHeading>
-      <CodeSnippet content={code} />
+      <CodeSnippet />
       <S.GuessCount>Guesses: {guesses.length}/5</S.GuessCount>
       <GuessTable />
       {isMobile && <GuessNavigation />}
