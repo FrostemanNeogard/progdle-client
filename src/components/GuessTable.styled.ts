@@ -1,12 +1,16 @@
 import styled from "styled-components";
 
+export const GuessTablesContainer = styled.div`
+  overflow-x: scroll;
+  display: flex;
+`;
+
 export const GuessTable = styled.table`
   width: 100%;
   color: white;
   display: grid;
   grid-auto-flow: column;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto 1fr;
   row-gap: 1rem;
   height: auto;
   flex: 1;
