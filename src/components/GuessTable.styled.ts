@@ -2,7 +2,16 @@ import styled from "styled-components";
 
 export const GuessTablesContainer = styled.div`
   overflow-x: scroll;
-  display: flex;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: auto 1fr;
+  grid-auto-columns: 100%;
+
+  h1 {
+    font-size: 2rem;
+    text-align: center;
+    padding: 1rem;
+  }
 `;
 
 export const GuessTable = styled.table`
