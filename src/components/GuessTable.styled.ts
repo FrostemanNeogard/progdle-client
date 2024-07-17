@@ -28,7 +28,16 @@ export const GuessTable = styled.table`
       td {
         text-align: center;
         padding: 0.5rem 1rem;
-        background-color: ${(props) => props.theme.colors.success};
+
+        &.INCORRECT {
+          background-color: ${(props) => props.theme.colors.danger};
+        }
+        &.CORRECT {
+          background-color: ${(props) => props.theme.colors.success};
+        }
+        &.PARTIAL {
+          background-color: ${(props) => props.theme.colors.warning};
+        }
         color: ${(props) => props.theme.colors.tx.secondary};
       }
     }
