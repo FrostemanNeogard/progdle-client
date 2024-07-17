@@ -9,18 +9,6 @@ import { MobileContext } from "../root/RootPage";
 export default function HomePage() {
   const isMobile = useContext(MobileContext);
 
-  // const [guesses, setGuesses] = useState<Guess[]>([
-  //   {
-  //     releaseYear: 1990,
-  //     language: "JavaScript",
-  //     paradigm: "Multi-Paradigm",
-  //     typing: "Weak, Dynamic",
-  //     domain: "Web",
-  //     memorySafe: false,
-  //     os: "Windows",
-  //   },
-  // ]);
-
   // Temporary data setters for testing purposes
   const code = `
 for (let i = 0; i < 10; i++) {
