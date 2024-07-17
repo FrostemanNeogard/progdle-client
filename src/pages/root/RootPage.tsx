@@ -6,12 +6,15 @@ import { theme } from "../../styles/theme";
 import { createContext, useEffect, useState } from "react";
 import useWindowDimensions from "../../hooks/WindowDimensions";
 import { Guess } from "../../types/Guess";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 export const MobileContext = createContext<boolean>(true);
 export const GuessesContext = createContext<{
   guesses: Guess[];
   addGuess?: (arg0: Guess) => void;
 }>({ guesses: [] });
+
+const queryClient = new QueryClient();
 
 export default function RootPage() {
   const { width } = useWindowDimensions();
@@ -20,19 +23,6 @@ export default function RootPage() {
 
   useEffect(() => {
     setIsMobile(width < 768);
-
-    // Hard-coded for testing purposes
-    setGuesses([
-      {
-        releaseYear: 1990,
-        language: "JavaScript",
-        paradigm: "Multi-Paradigm",
-        typing: "Weak, Dynamic",
-        domain: "Web",
-        memorySafe: false,
-        os: "Windows",
-      },
-    ]);
   }, [width]);
 
   const addGuess = (newGuess: Guess) => {
@@ -43,12 +33,14 @@ export default function RootPage() {
     <ThemeProvider theme={theme}>
       <MobileContext.Provider value={isMobile}>
         <GuessesContext.Provider value={{ guesses, addGuess }}>
-          <S.Root>
-            <AppHeader />
-            <S.MainContent>
-              <Outlet />
-            </S.MainContent>
-          </S.Root>
+          <QueryClientProvider client={queryClient}>
+            <S.Root>
+              <AppHeader />
+              <S.MainContent>
+                <Outlet />
+              </S.MainContent>
+            </S.Root>
+          </QueryClientProvider>
         </GuessesContext.Provider>
       </MobileContext.Provider>
     </ThemeProvider>
