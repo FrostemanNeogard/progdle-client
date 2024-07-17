@@ -4,10 +4,11 @@ import GuessInputBar from "../../components/GuessInputBar";
 import GuessTable from "../../components/GuessTable";
 import GuessNavigation from "../../components/GuessNavigation";
 import * as S from "./HomePage.styled";
-import { MobileContext } from "../root/RootPage";
+import { GuessesContext, MobileContext } from "../root/RootPage";
 
 export default function HomePage() {
   const isMobile = useContext(MobileContext);
+  const { guesses } = useContext(GuessesContext);
 
   // Temporary data setters for testing purposes
   const code = `
@@ -22,7 +23,7 @@ for (let i = 0; i < 10; i++) {
         Guess the Programming Language
       </S.InstructionHeading>
       <CodeSnippet content={code} />
-      <S.GuessCount>Guesses: {0}/5</S.GuessCount>
+      <S.GuessCount>Guesses: {guesses.length}/5</S.GuessCount>
       <GuessTable />
       {isMobile && <GuessNavigation />}
       <GuessInputBar />
