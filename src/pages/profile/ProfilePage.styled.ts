@@ -8,6 +8,18 @@ export const Profile = styled.div`
     font-size: 3rem;
   }
 
+  > div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    img {
+      aspect-ratio: 1/1;
+      height: 4rem;
+      border-radius: 50%;
+    }
+  }
+
   button {
     color: ${(props) => props.theme.colors.tx.secondary};
     border: none;

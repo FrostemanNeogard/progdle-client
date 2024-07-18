@@ -49,7 +49,12 @@ export default function ProfilePage() {
 
   return (
     <S.Profile>
-      {!isEditMode && <h1>User: {userData?.username}</h1>}
+      {!isEditMode && (
+        <div>
+          <img src={userData?.profilePictureSrc} />
+          <h1>{userData?.username}</h1>
+        </div>
+      )}
       {isEditMode && (
         <S.ProfileForm onSubmit={updateProfile}>
           <label htmlFor="username">New Username</label>
@@ -83,7 +88,7 @@ export default function ProfilePage() {
         </S.ProfileForm>
       )}
 
-      <h1>Score: {userData?.score}</h1>
+      <h1>Your Score: {userData?.score}</h1>
       <button onClick={() => setIsEditMode(true)} disabled={isEditMode}>
         Edit Profile
       </button>
