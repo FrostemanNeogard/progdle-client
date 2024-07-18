@@ -2,17 +2,18 @@ import SyntaxHighlighter from "react-syntax-highlighter";
 import * as S from "./CodeSnippet.styled.ts";
 import { useQuery } from "@tanstack/react-query";
 import { useContext } from "react";
-import { GuessesContext } from "../pages/root/RootPage.tsx";
+import { GameStatusContext, GuessesContext } from "../pages/root/RootPage.tsx";
 import axios from "axios";
 
 export default function CodeSnippet() {
   const { guesses } = useContext(GuessesContext);
+  const { hasWon } = useContext(GameStatusContext);
   const { isPending, error, data } = useQuery({
     queryKey: ["snippet-level-" + guesses.length],
     queryFn: () =>
       axios.get(
         "http://localhost:8080/api/snippets/daily/" +
-          Math.min(guesses.length, 4),
+          Math.min(guesses.length - (hasWon ? 1 : 0), 4),
       ),
   });
 
