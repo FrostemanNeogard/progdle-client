@@ -15,14 +15,14 @@ export default function GamePage() {
       return;
     }
     setGuessPageIndex((prev) => prev + 1);
-  }
+  };
 
   const decrementPageIndex = () => {
     if (guessPageIndex == 0) {
       return;
     }
     setGuessPageIndex((prev) => prev - 1);
-  }
+  };
 
   return (
     <>
@@ -31,7 +31,7 @@ export default function GamePage() {
       </S.InstructionHeading>
       <CodeSnippet />
       <S.GuessCount>Guesses remaining: {5 - guesses.length}</S.GuessCount>
-      <GuessTable pageIndex={guessPageIndex}/>
+      <GuessTable pageIndex={guessPageIndex} />
       {isMobile && (
         <S.NavBar>
           <button onClick={decrementPageIndex}>&lt;</button>
