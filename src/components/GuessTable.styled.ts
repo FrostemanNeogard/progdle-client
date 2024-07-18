@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const GuessTablesContainer = styled.div<{ $pageIndex: number; }>`
+export const GuessTablesContainer = styled.div<{ $pageIndex: number }>`
   display: grid;
   grid-auto-flow: column;
   grid-template-rows: auto 1fr;
@@ -50,6 +50,12 @@ export const GuessTable = styled.table`
       grid-template-columns: repeat(7, 1fr);
     }
 
+    &:nth-of-type(2) {
+      tr td {
+        outline: 2px solid black;
+      }
+    }
+
     tr {
       display: flex;
       flex-direction: column;
@@ -65,15 +71,25 @@ export const GuessTable = styled.table`
       td {
         text-align: center;
         padding-block: 0.5rem;
+        border-radius: 5px;
+        position: relative;
+
+        span {
+          position: absolute;
+          left: 5%;
+          font-size: 150%;
+          top: 50%;
+          transform: translateY(-60%);
+        }
 
         &.INCORRECT {
-          background-color: ${(props) => props.theme.colors.danger};
+          background-color: ${(props) => props.theme.colors.danger_ts};
         }
         &.CORRECT {
-          background-color: ${(props) => props.theme.colors.success};
+          background-color: ${(props) => props.theme.colors.success_ts};
         }
         &.PARTIAL {
-          background-color: ${(props) => props.theme.colors.warning};
+          background-color: ${(props) => props.theme.colors.warning_ts};
         }
         color: ${(props) => props.theme.colors.tx.secondary};
       }
