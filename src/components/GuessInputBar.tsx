@@ -4,10 +4,12 @@ import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { GameStatusContext, GuessesContext } from "../pages/root/RootPage";
 import { Guess, Language } from "../types/Guess";
+import useAuth from "../hooks/Auth";
 
 export default function GuessInputBar() {
   const [languageInput, setLanguageInput] = useState<string>("");
   const [allLanguages, setAllLanguages] = useState<string[]>([]);
+  const { token, isLoggedIn } = useAuth();
   const { guesses, addGuess } = useContext(GuessesContext);
   const { hasWon, changeGameStatus } = useContext(GameStatusContext);
 
@@ -19,18 +21,21 @@ export default function GuessInputBar() {
 
   const { isPending, mutate } = useMutation({
     mutationFn: (guess: string) => {
-      return axios.get("http://localhost:8080/api/guess/" + guess);
+      return axios.get("http://localhost:8080/api/guess/" + guess, {
+        headers: {
+          Authorization: "Bearer " + isLoggedIn ? token : null,
+        },
+      });
     },
     onSuccess: (res: { data: Guess }) => {
+      addGuess(res.data);
       if (res.data.name == "CORRECT") {
         changeGameStatus(true);
         alert(
           "Correct! The programming language was: " +
             res.data.languageData.name,
         );
-        return;
       }
-      addGuess(res.data);
     },
   });
 
