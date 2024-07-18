@@ -12,7 +12,9 @@ export default function LoginForm() {
 
   const handleLogin = async () => {
     if (!username || !password) {
-      alert("Invalid login data. Please make sure to input both username and password.")
+      alert(
+        "Invalid login data. Please make sure to input both username and password.",
+      );
       return;
     }
     login(username, password);
@@ -38,7 +40,9 @@ export default function LoginForm() {
         onChange={(e) => setPassword(e.target.value)}
       />
 
-      <button disabled={isLoading || hasLoggedIn || !username || !password}>Login</button>
+      <button disabled={isLoading || hasLoggedIn || !username || !password}>
+        Login
+      </button>
     </S.Form>
   );
 }

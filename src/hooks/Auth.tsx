@@ -12,7 +12,9 @@ export default function useAuth() {
     });
     const newToken = res.data.token;
     if (!newToken) {
-      alert("An error ocurred when attempting to login. Please try again later.");
+      alert(
+        "An error ocurred when attempting to login. Please try again later.",
+      );
       return;
     }
     localStorage.setItem("loginToken", newToken);

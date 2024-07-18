@@ -19,7 +19,12 @@ export default function ProfilePage() {
     <S.Profile>
       <S.ProfileForm>
         <label htmlFor="username">Username</label>
-        <input name="username" type="text" disabled={!isEditMode} defaultValue={userData?.username} />
+        <input
+          name="username"
+          type="text"
+          disabled={!isEditMode}
+          defaultValue={userData?.username}
+        />
       </S.ProfileForm>
 
       <h1>Score: {userData?.score}</h1>
