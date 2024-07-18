@@ -2,7 +2,6 @@ import { useContext } from "react";
 import CodeSnippet from "../../components/CodeSnippet";
 import GuessInputBar from "../../components/GuessInputBar";
 import GuessTable from "../../components/GuessTable";
-import GuessNavigation from "../../components/GuessNavigation";
 import * as S from "./GamePage.styled";
 import { GuessesContext, MobileContext } from "../root/RootPage";
 
@@ -18,7 +17,12 @@ export default function GamePage() {
       <CodeSnippet />
       <S.GuessCount>Guesses: {guesses.length}/5</S.GuessCount>
       <GuessTable />
-      {isMobile && <GuessNavigation />}
+      {isMobile && (
+        <S.NavBar>
+          <button>Prev</button>
+          <button>Next</button>
+        </S.NavBar>
+      )}
       <GuessInputBar />
     </>
   );
