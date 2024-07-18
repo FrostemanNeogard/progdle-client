@@ -23,7 +23,7 @@ const queryClient = new QueryClient();
 export default function RootPage() {
   const { width } = useWindowDimensions();
   const [isMobile, setIsMobile] = useState<boolean>(width < 1024);
-  const [guesses, setGuesses] = useState<Guess[]>([]);
+  const [guesses, setGuesses] = useState<Guess[]>(JSON.parse(localStorage.getItem("guesses") ?? "[]") ?? []);
   const [hasWon, setHasWon] = useState<boolean>(false);
 
   useEffect(() => {
@@ -31,7 +31,8 @@ export default function RootPage() {
   }, [width]);
 
   const addGuess = (newGuess: Guess) => {
-    setGuesses((prev) => [...prev, newGuess]);
+    localStorage.setItem("guesses", JSON.stringify([newGuess, ...guesses]));
+    setGuesses((prev) => [newGuess, ...prev]);
   };
 
   const changeGameStatus = (newState: boolean) => {
