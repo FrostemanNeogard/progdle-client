@@ -12,6 +12,10 @@ export default function LoginForm() {
 
   const handleLogin = async (e: React.SyntheticEvent) => {
     e.preventDefault();
+    if (hasLoggedIn) {
+      alert("You are already logged in.");
+      return;
+    }
     if (!username || !password) {
       alert(
         "Invalid login data. Please make sure to input both username and password.",
@@ -21,6 +25,7 @@ export default function LoginForm() {
     const loginSuccess = await login(username, password);
     setHasLoggedIn(loginSuccess);
     setIsLoading(false);
+    window.location.reload();
   };
 
   return (
