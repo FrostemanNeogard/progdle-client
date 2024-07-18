@@ -38,7 +38,7 @@ export default function GuessInputBar() {
         return;
       }
       if (guesses.length >= 4) {
-        alert("You lose!")
+        alert("You lose!");
       }
     },
   });
