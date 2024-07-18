@@ -3,7 +3,7 @@ import * as S from "./AppHeader.styled";
 import useAuth from "../hooks/Auth";
 
 export default function AppHeader() {
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn, loggedInUser } = useAuth();
 
   return (
     <S.Header>
@@ -13,11 +13,7 @@ export default function AppHeader() {
         </Link>
         <Link to="/profile">
           {isLoggedIn ? (
-            <S.ProfilePicture
-              src={
-                "https://pbs.twimg.com/profile_images/1190265840056311808/HfcDP032_400x400.png"
-              }
-            />
+            <S.ProfilePicture src={loggedInUser?.profilePictureSrc} />
           ) : (
             <h1>Login</h1>
           )}
