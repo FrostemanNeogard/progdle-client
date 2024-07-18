@@ -34,11 +34,13 @@ export default function ProfilePage() {
     }
 
     setIsEditMode(false);
-    const data = await axios.put(
-      "http://localhost:8080/users/" + userData?.username,
-      { username, profilePictureSrc: profilePicture },
-    );
-    console.log("UPDATED USER DATA:", data);
+    await axios.put("http://localhost:8080/api/users/" + userData?.username, {
+      username,
+      profilePictureSrc: profilePicture,
+    });
+    const newUserData = { ...userData }
+    newUserData.username = username;
+    localStorage.setItem("userData", JSON.stringify(newUserData));
   };
 
   return (
