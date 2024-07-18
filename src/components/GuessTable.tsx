@@ -4,7 +4,7 @@ import { GuessesContext, MobileContext } from "../pages/root/RootPage";
 
 type GuessTableProps = {
   pageIndex: number;
-}
+};
 export default function GuessTable({ pageIndex }: GuessTableProps) {
   const { guesses } = useContext(GuessesContext);
   const isMobile = useContext(MobileContext);
@@ -44,7 +44,15 @@ export default function GuessTable({ pageIndex }: GuessTableProps) {
             <tbody>
               <tr>
                 {!isMobile && <td>{guess?.languageData?.name}</td>}
-                <td className={guess?.releaseYear}>
+                <td
+                  className={
+                    guess?.releaseYear == "CORRECT"
+                      ? "year CORRECT"
+                      : "year INCORRECT"
+                  }
+                >
+                  {guess?.releaseYear == "PARTIAL" && <span>&uarr;</span>}
+                  {guess?.releaseYear == "INCORRECT" && <span>&darr;</span>}
                   {guess?.languageData?.releaseYear}
                 </td>
                 <td className={guess?.paradigm}>
