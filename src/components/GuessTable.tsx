@@ -2,12 +2,15 @@ import { Fragment, useContext } from "react";
 import * as S from "./GuessTable.styled";
 import { GuessesContext, MobileContext } from "../pages/root/RootPage";
 
-export default function GuessTable() {
+type GuessTableProps = {
+  pageIndex: number;
+}
+export default function GuessTable({ pageIndex }: GuessTableProps) {
   const { guesses } = useContext(GuessesContext);
   const isMobile = useContext(MobileContext);
 
   return (
-    <S.GuessTablesContainer>
+    <S.GuessTablesContainer $pageIndex={pageIndex}>
       {guesses.map((guess, index) => (
         <Fragment key={index}>
           <h1>{guess?.languageData?.name}</h1>
