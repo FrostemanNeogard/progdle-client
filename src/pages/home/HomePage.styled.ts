@@ -14,7 +14,8 @@ export const HomeContent = styled.div`
     gap: 1rem;
     grid-template-columns: repeat(2, 1fr);
 
-    a, button {
+    a,
+    button {
       border-radius: 5px;
       background-color: gray;
       padding: 1rem;
@@ -28,7 +29,7 @@ export const HomeContent = styled.div`
         filter: brightness(90%);
       }
     }
-    
+
     button {
       border: none;
       grid-column: span 2;

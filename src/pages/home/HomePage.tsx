@@ -11,11 +11,15 @@ export default function HomePage() {
     localStorage.removeItem("guesses");
     localStorage.removeItem("haswon");
     changeGameStatus(false);
-  }
+  };
 
   return (
     <S.HomeContent>
-      <p>Welcome to ProgDle!<br/>What would you like to do?</p>
+      <p>
+        Welcome to ProgDle!
+        <br />
+        What would you like to do?
+      </p>
       <div>
         <Link to="/game">Play</Link>
         <Link to="/profile">Login</Link>
