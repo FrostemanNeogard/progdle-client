@@ -21,7 +21,7 @@ export default function LeaderboardPage() {
       <h1>Leaderboard</h1>
       {users.map((u, index) => (
         <div key={u.id}>
-          <h3>{index + 1}</h3>
+          <h3>{index + 1}.</h3>
           <img src={u.profilePictureSrc} />
           <h1>{u.username}</h1>
           <h2>Score: {u.score}</h2>
