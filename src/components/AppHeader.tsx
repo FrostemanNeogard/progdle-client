@@ -12,7 +12,7 @@ export default function AppHeader() {
           <S.Title>ProgDle</S.Title>
         </Link>
         <Link to="/profile">
-          {isLoggedIn ? (
+          {isLoggedIn && loggedInUser?.username ? (
             <S.ProfilePicture src={loggedInUser?.profilePictureSrc} />
           ) : (
             <h1>Login</h1>
