@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
-export const GuessTablesContainer = styled.div`
-  overflow-x: scroll;
+export const GuessTablesContainer = styled.div<{ $pageIndex: number; }>`
   display: grid;
   grid-auto-flow: column;
   grid-template-rows: auto 1fr;
   grid-auto-columns: 100%;
+  transition: all 300ms ease;
+  transform: translateX(calc(100% * -${(props) => props.$pageIndex}));
 
   h1 {
     font-size: 2rem;
@@ -15,6 +16,7 @@ export const GuessTablesContainer = styled.div`
 `;
 
 export const GuessTable = styled.table`
+  padding-inline: 2rem;
   width: 100%;
   color: white;
   display: grid;
@@ -62,7 +64,7 @@ export const GuessTable = styled.table`
 
       td {
         text-align: center;
-        padding: 0.5rem 1rem;
+        padding-block: 0.5rem;
 
         &.INCORRECT {
           background-color: ${(props) => props.theme.colors.danger};
