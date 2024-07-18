@@ -22,6 +22,13 @@ export const NavBar = styled.nav`
 
   button {
     font-size: 2rem;
-    padding: 1rem;
+    border: none;
+    border-radius: 10px;
+    padding: 0.5rem;
+
+    &:hover {
+      cursor: pointer;
+      filter: brightness(90%);
+    }
   }
 `;
