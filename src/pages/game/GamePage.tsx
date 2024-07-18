@@ -27,15 +27,15 @@ export default function GamePage() {
   return (
     <>
       <S.InstructionHeading>
-        Guess the Programming Language
+        Guess this Programming Language
       </S.InstructionHeading>
       <CodeSnippet />
-      <S.GuessCount>Guesses: {guesses.length}/5</S.GuessCount>
+      <S.GuessCount>Guesses remaining: {5 - guesses.length}</S.GuessCount>
       <GuessTable pageIndex={guessPageIndex}/>
       {isMobile && (
         <S.NavBar>
-          <button onClick={decrementPageIndex}>Prev</button>
-          <button onClick={incrementPageIndex}>Next</button>
+          <button onClick={decrementPageIndex}>&lt;</button>
+          <button onClick={incrementPageIndex}>&gt;</button>
         </S.NavBar>
       )}
       <GuessInputBar />
