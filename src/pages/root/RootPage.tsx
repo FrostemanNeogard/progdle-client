@@ -23,8 +23,12 @@ const queryClient = new QueryClient();
 export default function RootPage() {
   const { width } = useWindowDimensions();
   const [isMobile, setIsMobile] = useState<boolean>(width < 1024);
-  const [guesses, setGuesses] = useState<Guess[]>(JSON.parse(localStorage.getItem("guesses") ?? "[]") ?? []);
-  const [hasWon, setHasWon] = useState<boolean>(JSON.parse(localStorage.getItem("winstate") ?? "false") ?? false);
+  const [guesses, setGuesses] = useState<Guess[]>(
+    JSON.parse(localStorage.getItem("guesses") ?? "[]") ?? [],
+  );
+  const [hasWon, setHasWon] = useState<boolean>(
+    JSON.parse(localStorage.getItem("winstate") ?? "false") ?? false,
+  );
 
   useEffect(() => {
     setIsMobile(width < 1024);
