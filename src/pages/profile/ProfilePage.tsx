@@ -38,7 +38,7 @@ export default function ProfilePage() {
       username,
       profilePictureSrc: profilePicture,
     });
-    const newUserData = { ...userData }
+    const newUserData = { ...userData };
     newUserData.username = username;
     localStorage.setItem("userData", JSON.stringify(newUserData));
   };
