@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Root = styled.div`
+  overflow-x: hidden;
   background-color: ${(props) => props.theme.colors.bg.primary};
   color: ${(props) => props.theme.colors.tx.primary};
   font-family: "Montserrat";
