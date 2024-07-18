@@ -13,7 +13,7 @@ export default function CodeSnippet() {
     queryFn: () =>
       axios.get(
         "http://localhost:8080/api/snippets/daily/" +
-          Math.min(guesses.length - (hasWon ? 1 : 0), 4),
+          Math.min(Math.max(guesses.length - (hasWon ? 1 : 0), 0), 4),
       ),
   });
 
