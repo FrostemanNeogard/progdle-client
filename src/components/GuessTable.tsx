@@ -41,8 +41,12 @@ export default function GuessTable() {
             <tbody>
               <tr>
                 {!isMobile && <td>{guess.languageData.name}</td>}
-                <td className={guess.releaseYear}>{guess.languageData.releaseYear}</td>
-                <td className={guess.paradigm}>{guess.languageData.paradigm}</td>
+                <td className={guess.releaseYear}>
+                  {guess.languageData.releaseYear}
+                </td>
+                <td className={guess.paradigm}>
+                  {guess.languageData.paradigm}
+                </td>
                 <td className={guess.typing}>{guess.languageData.typing}</td>
                 <td className={guess.domain}>{guess.languageData.domain}</td>
                 <td className={guess.memorySafe}>
