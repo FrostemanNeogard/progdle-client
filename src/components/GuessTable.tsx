@@ -10,7 +10,7 @@ export default function GuessTable() {
     <S.GuessTablesContainer>
       {guesses.map((guess, index) => (
         <Fragment key={index}>
-          <h1>{guess.languageData.name}</h1>
+          <h1>{guess?.languageData?.name}</h1>
           <S.GuessTable>
             {!isMobile && (
               <thead>
@@ -40,19 +40,19 @@ export default function GuessTable() {
             )}
             <tbody>
               <tr>
-                {!isMobile && <td>{guess.languageData.name}</td>}
-                <td className={guess.releaseYear}>
-                  {guess.languageData.releaseYear}
+                {!isMobile && <td>{guess?.languageData?.name}</td>}
+                <td className={guess?.releaseYear}>
+                  {guess?.languageData?.releaseYear}
                 </td>
-                <td className={guess.paradigm}>
-                  {guess.languageData.paradigm}
+                <td className={guess?.paradigm}>
+                  {guess?.languageData?.paradigm}
                 </td>
-                <td className={guess.typing}>{guess.languageData.typing}</td>
-                <td className={guess.domain}>{guess.languageData.domain}</td>
-                <td className={guess.memorySafe}>
-                  {guess.languageData.memorySafe ? "Yes" : "No"}
+                <td className={guess?.typing}>{guess?.languageData?.typing}</td>
+                <td className={guess?.domain}>{guess?.languageData?.domain}</td>
+                <td className={guess?.memorySafe}>
+                  {guess?.languageData?.memorySafe ? "Yes" : "No"}
                 </td>
-                <td className={guess.os}>{guess.languageData.os}</td>
+                <td className={guess?.os}>{guess?.languageData?.os}</td>
               </tr>
             </tbody>
           </S.GuessTable>
