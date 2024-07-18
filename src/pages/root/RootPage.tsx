@@ -8,6 +8,10 @@ import useWindowDimensions from "../../hooks/WindowDimensions";
 import { Guess } from "../../types/Guess";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
+export const GameStatusContext = createContext<{
+  hasWon: boolean;
+  changeGameStatus: (arg0: boolean) => void;
+}>({ hasWon: false, changeGameStatus: () => {} });
 export const MobileContext = createContext<boolean>(true);
 export const GuessesContext = createContext<{
   guesses: Guess[];
@@ -20,6 +24,7 @@ export default function RootPage() {
   const { width } = useWindowDimensions();
   const [isMobile, setIsMobile] = useState<boolean>(width < 1024);
   const [guesses, setGuesses] = useState<Guess[]>([]);
+  const [hasWon, setHasWon] = useState<boolean>(false);
 
   useEffect(() => {
     setIsMobile(width < 1024);
@@ -29,19 +34,25 @@ export default function RootPage() {
     setGuesses((prev) => [...prev, newGuess]);
   };
 
+  const changeGameStatus = (newState: boolean) => {
+    setHasWon(newState);
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <MobileContext.Provider value={isMobile}>
-        <GuessesContext.Provider value={{ guesses, addGuess }}>
-          <QueryClientProvider client={queryClient}>
-            <S.Root>
-              <AppHeader />
-              <S.MainContent>
-                <Outlet />
-              </S.MainContent>
-            </S.Root>
-          </QueryClientProvider>
-        </GuessesContext.Provider>
+        <GameStatusContext.Provider value={{ hasWon, changeGameStatus }}>
+          <GuessesContext.Provider value={{ guesses, addGuess }}>
+            <QueryClientProvider client={queryClient}>
+              <S.Root>
+                <AppHeader />
+                <S.MainContent>
+                  <Outlet />
+                </S.MainContent>
+              </S.Root>
+            </QueryClientProvider>
+          </GuessesContext.Provider>
+        </GameStatusContext.Provider>
       </MobileContext.Provider>
     </ThemeProvider>
   );
