@@ -1,14 +1,21 @@
-import { SyntheticEvent, useContext, useState } from "react";
+import { SyntheticEvent, useContext, useEffect, useState } from "react";
 import * as S from "./GuessInputBar.styled";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { GameStatusContext, GuessesContext } from "../pages/root/RootPage";
-import { Guess } from "../types/Guess";
+import { Guess, Language } from "../types/Guess";
 
 export default function GuessInputBar() {
   const [languageInput, setLanguageInput] = useState<string>("");
+  const [allLanguages, setAllLanguages] = useState<string[]>([]);
   const { guesses, addGuess } = useContext(GuessesContext);
   const { hasWon, changeGameStatus } = useContext(GameStatusContext);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/api/languages")
+      .then((res) => setAllLanguages(res.data.map((l: Language) => l.name)));
+  }, []);
 
   const { isPending, mutate } = useMutation({
     mutationFn: (guess: string) => {
@@ -50,9 +57,15 @@ export default function GuessInputBar() {
         type="text"
         placeholder="Start typing..."
         value={languageInput}
+        list="languages"
         disabled={hasWon}
         onChange={(e) => setLanguageInput(e.target.value)}
       />
+      <datalist id="languages">
+        {allLanguages.map((l, index) => (
+          <option value={l} key={index} />
+        ))}
+      </datalist>
       <S.GuessButton
         disabled={isPending || guesses.length >= 5 || hasWon}
         onClick={submitGuess}
