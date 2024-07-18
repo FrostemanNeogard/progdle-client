@@ -35,39 +35,53 @@ export default function ProfilePage() {
 
     setIsEditMode(false);
     await axios.put("http://localhost:8080/api/users/" + userData?.username, {
-      username,
-      profilePictureSrc: profilePicture,
+      username: username.length > 0 ? username : userData?.username,
+      profilePictureSrc:
+        profilePicture.length > 0
+          ? profilePicture
+          : userData?.profilePictureSrc,
     });
     const newUserData = { ...userData };
     newUserData.username = username;
     localStorage.setItem("userData", JSON.stringify(newUserData));
+    alert("User profile successfully updated!");
   };
 
   return (
     <S.Profile>
-      <S.ProfileForm onSubmit={updateProfile}>
-        <label htmlFor="username">Username</label>
-        <input
-          name="username"
-          type="text"
-          disabled={!isEditMode}
-          defaultValue={userData?.username}
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
+      {!isEditMode && <h1>User: {userData?.username}</h1>}
+      {isEditMode && (
+        <S.ProfileForm onSubmit={updateProfile}>
+          <label htmlFor="username">New Username</label>
+          <input
+            name="username"
+            type="text"
+            disabled={!isEditMode}
+            defaultValue={userData?.username}
+            value={isEditMode ? username : userData?.username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
 
-        <label htmlFor="pfp">Profile Picture URL</label>
-        <input
-          name="pfp"
-          type="text"
-          disabled={!isEditMode}
-          defaultValue={userData?.profilePictureSrc}
-          value={profilePicture}
-          onChange={(e) => setProfilePicture(e.target.value)}
-        />
+          <label htmlFor="pfp">New Profile Picture URL</label>
+          <input
+            name="pfp"
+            type="text"
+            disabled={!isEditMode}
+            defaultValue={userData?.profilePictureSrc}
+            value={isEditMode ? profilePicture : userData?.profilePictureSrc}
+            onChange={(e) => setProfilePicture(e.target.value)}
+          />
 
-        {isEditMode && <button onClick={updateProfile}>Save Changes</button>}
-      </S.ProfileForm>
+          {isEditMode && (
+            <S.SaveButton onClick={updateProfile}>Save Changes</S.SaveButton>
+          )}
+          {isEditMode && (
+            <S.CancelButton onClick={() => setIsEditMode(false)}>
+              Cancel Changes
+            </S.CancelButton>
+          )}
+        </S.ProfileForm>
+      )}
 
       <h1>Score: {userData?.score}</h1>
       <button onClick={() => setIsEditMode(true)} disabled={isEditMode}>
