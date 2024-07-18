@@ -3,10 +3,10 @@ import CodeSnippet from "../../components/CodeSnippet";
 import GuessInputBar from "../../components/GuessInputBar";
 import GuessTable from "../../components/GuessTable";
 import GuessNavigation from "../../components/GuessNavigation";
-import * as S from "./HomePage.styled";
+import * as S from "./GamePage.styled";
 import { GuessesContext, MobileContext } from "../root/RootPage";
 
-export default function HomePage() {
+export default function GamePage() {
   const isMobile = useContext(MobileContext);
   const { guesses } = useContext(GuessesContext);
 
