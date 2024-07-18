@@ -1,5 +1,5 @@
 type GuessState = "CORRECT" | "INCORRECT" | "PARTIAL";
-type Language = {
+export type Language = {
   id: string;
   releaseYear: number;
   memorySafe: boolean;
