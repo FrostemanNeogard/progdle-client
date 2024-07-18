@@ -35,6 +35,10 @@ export default function GuessInputBar() {
           "Correct! The programming language was: " +
             res.data.languageData.name,
         );
+        return;
+      }
+      if (guesses.length >= 4) {
+        alert("You lose!")
       }
     },
   });
@@ -63,7 +67,7 @@ export default function GuessInputBar() {
         placeholder="Start typing..."
         value={languageInput}
         list="languages"
-        disabled={hasWon}
+        disabled={hasWon || guesses.length >= 5}
         onChange={(e) => setLanguageInput(e.target.value)}
       />
       <datalist id="languages">
