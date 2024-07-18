@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import * as S from "./LoginForm.styled";
 import useAuth from "../../../hooks/Auth";
 
@@ -10,15 +10,16 @@ export default function LoginForm() {
 
   const { login } = useAuth();
 
-  const handleLogin = async () => {
+  const handleLogin = async (e: React.SyntheticEvent) => {
+    e.preventDefault();
     if (!username || !password) {
       alert(
         "Invalid login data. Please make sure to input both username and password.",
       );
       return;
     }
-    login(username, password);
-    setHasLoggedIn(true);
+    const loginSuccess = await login(username, password);
+    setHasLoggedIn(loginSuccess);
     setIsLoading(false);
   };
 
@@ -40,9 +41,11 @@ export default function LoginForm() {
         onChange={(e) => setPassword(e.target.value)}
       />
 
-      <button disabled={isLoading || hasLoggedIn || !username || !password}>
+      <S.LoginButton
+        disabled={isLoading || hasLoggedIn || !username || !password}
+      >
         Login
-      </button>
+      </S.LoginButton>
     </S.Form>
   );
 }
