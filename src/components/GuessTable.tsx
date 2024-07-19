@@ -13,17 +13,19 @@ export default function GuessTable({ pageIndex }: GuessTableProps) {
     return (
       <S.GuessTablesContainer $pageIndex={pageIndex}>
         <S.GuessTable>
-          <thead>
-            <tr>
-              <th>Language</th>
-              <th>Release Year</th>
-              <th>Paradigm</th>
-              <th>Typing</th>
-              <th>Domain</th>
-              <th>Memory safe</th>
-              <th>OS</th>
-            </tr>
-          </thead>
+          {guesses.length > 0 && (
+            <thead>
+              <tr>
+                <th>Language</th>
+                <th>Release Year</th>
+                <th>Paradigm</th>
+                <th>Typing</th>
+                <th>Domain</th>
+                <th>Memory safe</th>
+                <th>OS</th>
+              </tr>
+            </thead>
+          )}
 
           <tbody>
             {guesses.map((guess, index) => (
