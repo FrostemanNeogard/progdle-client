@@ -4,6 +4,7 @@ import axios from "axios";
 import useAuth from "../../hooks/Auth";
 import { UserData } from "../../types/User";
 import LoginForm from "./components/LoginForm";
+import { Link } from "@tanstack/react-router";
 
 export default function ProfilePage() {
   const { logout, token, isLoggedIn, loggedInUser } = useAuth();
@@ -62,7 +63,6 @@ export default function ProfilePage() {
             name="username"
             type="text"
             disabled={!isEditMode}
-            defaultValue={userData?.username}
             value={isEditMode ? username : userData?.username}
             onChange={(e) => setUsername(e.target.value)}
           />
@@ -72,7 +72,6 @@ export default function ProfilePage() {
             name="pfp"
             type="text"
             disabled={!isEditMode}
-            defaultValue={userData?.profilePictureSrc}
             value={isEditMode ? profilePicture : userData?.profilePictureSrc}
             onChange={(e) => setProfilePicture(e.target.value)}
           />
@@ -92,6 +91,7 @@ export default function ProfilePage() {
       <button onClick={() => setIsEditMode(true)} disabled={isEditMode}>
         Edit Profile
       </button>
+      <Link to={"/game"}>Back to game</Link>
       <S.LogoutButton onClick={logout}>Logout</S.LogoutButton>
     </S.Profile>
   );
