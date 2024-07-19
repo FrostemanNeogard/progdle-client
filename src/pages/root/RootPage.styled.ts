@@ -17,4 +17,11 @@ export const MainContent = styled.main`
   flex-direction: column;
   flex: 1;
   padding: 1rem;
+  align-self: center;
+  max-width: 1400px;
+  width: 100%;
+
+  @media (width >= ${(props) => props.theme.breakpoints.tablet}) {
+    padding-inline: 10vmin;
+  }
 `;
