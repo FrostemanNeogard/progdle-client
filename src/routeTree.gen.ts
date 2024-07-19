@@ -12,12 +12,24 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as ProfileImport } from './routes/profile'
+import { Route as LeaderboardImport } from './routes/leaderboard'
+import { Route as GameImport } from './routes/game'
 import { Route as IndexImport } from './routes/index'
 
 // Create/Update Routes
 
 const ProfileRoute = ProfileImport.update({
   path: '/profile',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const LeaderboardRoute = LeaderboardImport.update({
+  path: '/leaderboard',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const GameRoute = GameImport.update({
+  path: '/game',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -37,6 +49,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
+    '/game': {
+      id: '/game'
+      path: '/game'
+      fullPath: '/game'
+      preLoaderRoute: typeof GameImport
+      parentRoute: typeof rootRoute
+    }
+    '/leaderboard': {
+      id: '/leaderboard'
+      path: '/leaderboard'
+      fullPath: '/leaderboard'
+      preLoaderRoute: typeof LeaderboardImport
+      parentRoute: typeof rootRoute
+    }
     '/profile': {
       id: '/profile'
       path: '/profile'
@@ -49,7 +75,12 @@ declare module '@tanstack/react-router' {
 
 // Create and export the route tree
 
-export const routeTree = rootRoute.addChildren({ IndexRoute, ProfileRoute })
+export const routeTree = rootRoute.addChildren({
+  IndexRoute,
+  GameRoute,
+  LeaderboardRoute,
+  ProfileRoute,
+})
 
 /* prettier-ignore-end */
 
@@ -60,11 +91,19 @@ export const routeTree = rootRoute.addChildren({ IndexRoute, ProfileRoute })
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/game",
+        "/leaderboard",
         "/profile"
       ]
     },
     "/": {
       "filePath": "index.tsx"
+    },
+    "/game": {
+      "filePath": "game.tsx"
+    },
+    "/leaderboard": {
+      "filePath": "leaderboard.tsx"
     },
     "/profile": {
       "filePath": "profile.tsx"
