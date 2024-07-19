@@ -20,7 +20,8 @@ export const Profile = styled.div`
     }
   }
 
-  button {
+  button,
+  a {
     color: ${(props) => props.theme.colors.tx.secondary};
     border: none;
     border-radius: 10px;
@@ -34,6 +35,12 @@ export const Profile = styled.div`
         cursor: initial;
       }
     }
+  }
+
+  a {
+    text-decoration: none;
+    text-align: center;
+    background-color: ${(props) => props.theme.colors.success};
   }
 `;
 
