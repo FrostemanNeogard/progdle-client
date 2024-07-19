@@ -2,17 +2,16 @@ import { useEffect, useState } from "react";
 import * as S from "./LeaderboardPage.styled";
 import { UserData } from "../../types/User";
 import axios from "axios";
+import { BASE_API_URL } from "../../util/config";
 
 export default function LeaderboardPage() {
   const [users, setUsers] = useState<UserData[]>([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/users")
+      .get(BASE_API_URL + "/api/users")
       .then((res) =>
-        setUsers(
-          res.data.sort((a: UserData, b: UserData) => b.score - a.score),
-        ),
+        setUsers(res.data.sort((a: UserData, b: UserData) => b.score - a.score))
       );
   }, []);
 

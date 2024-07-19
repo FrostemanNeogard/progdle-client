@@ -5,6 +5,7 @@ import useAuth from "../../hooks/Auth";
 import { UserData } from "../../types/User";
 import LoginForm from "./components/LoginForm";
 import { Link } from "@tanstack/react-router";
+import { BASE_API_URL } from "../../util/config";
 
 export default function ProfilePage() {
   const { logout, token, isLoggedIn, loggedInUser } = useAuth();
@@ -12,7 +13,7 @@ export default function ProfilePage() {
   const [isEditMode, setIsEditMode] = useState<boolean>(false);
   const [username, setUsername] = useState<string>(userData?.username ?? "");
   const [profilePicture, setProfilePicture] = useState<string>(
-    userData?.profilePictureSrc ?? "",
+    userData?.profilePictureSrc ?? ""
   );
 
   useEffect(() => {
@@ -20,7 +21,7 @@ export default function ProfilePage() {
       return;
     }
     axios
-      .get("http://localhost:8080/api/users/" + loggedInUser?.username)
+      .get(BASE_API_URL + "/api/users/" + loggedInUser?.username)
       .then((res) => setUserData(res.data));
   }, [token, loggedInUser, isLoggedIn]);
 
@@ -35,7 +36,7 @@ export default function ProfilePage() {
     }
 
     setIsEditMode(false);
-    await axios.put("http://localhost:8080/api/users/" + userData?.username, {
+    await axios.put(BASE_API_URL + "/api/users/" + userData?.username, {
       username: username.length > 0 ? username : userData?.username,
       profilePictureSrc:
         profilePicture.length > 0

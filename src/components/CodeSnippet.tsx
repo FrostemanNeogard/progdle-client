@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useContext } from "react";
 import { GameStatusContext, GuessesContext } from "../pages/root/RootPage.tsx";
 import axios from "axios";
+import { BASE_API_URL } from "../util/config.ts";
 
 export default function CodeSnippet() {
   const { guesses } = useContext(GuessesContext);
@@ -12,8 +13,9 @@ export default function CodeSnippet() {
     queryKey: ["snippet-level-" + guesses.length],
     queryFn: () =>
       axios.get(
-        "http://localhost:8080/api/snippets/daily/" +
-          Math.min(Math.max(guesses.length - (hasWon ? 1 : 0), 0), 4),
+        BASE_API_URL +
+          "/api/snippets/daily/" +
+          Math.min(Math.max(guesses.length - (hasWon ? 1 : 0), 0), 4)
       ),
   });
 

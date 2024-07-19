@@ -5,6 +5,7 @@ import axios, { AxiosError } from "axios";
 import { GameStatusContext, GuessesContext } from "../pages/root/RootPage";
 import { Guess, Language } from "../types/Guess";
 import useAuth from "../hooks/Auth";
+import { BASE_API_URL } from "../util/config";
 
 export default function GuessInputBar() {
   const [languageInput, setLanguageInput] = useState<string>("");
@@ -15,13 +16,13 @@ export default function GuessInputBar() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/languages")
+      .get(BASE_API_URL + "/api/languages")
       .then((res) => setAllLanguages(res.data.map((l: Language) => l.name)));
   }, []);
 
   const { isPending, mutate } = useMutation({
     mutationFn: (guess: string) => {
-      return axios.get("http://localhost:8080/api/guess/" + guess, {
+      return axios.get(BASE_API_URL + "/api/guess/" + guess, {
         headers: {
           Authorization: "Bearer " + isLoggedIn ? token : null,
         },
@@ -32,8 +33,7 @@ export default function GuessInputBar() {
       if (res.data.name == "CORRECT") {
         changeGameStatus(true);
         alert(
-          "Correct! The programming language was: " +
-            res.data.languageData.name,
+          "Correct! The programming language was: " + res.data.languageData.name
         );
         return;
       }

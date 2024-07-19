@@ -1,20 +1,19 @@
 import axios, { AxiosError } from "axios";
 import { useEffect, useState } from "react";
 import { UserData } from "../types/User";
+import { BASE_API_URL } from "../util/config";
 
 export default function useAuth() {
   const [token, setToken] = useState<string | null>();
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [loggedInUser, setLoggedInUser] = useState<UserData | null>(
-    JSON.parse(localStorage.getItem("userData") ?? "{}"),
+    JSON.parse(localStorage.getItem("userData") ?? "{}")
   );
 
   useEffect(() => {
     const validateLogin = async () => {
       try {
-        await axios.get(
-          "http://localhost:8080/api/users/" + loggedInUser?.username,
-        );
+        await axios.get(BASE_API_URL + "/api/users/" + loggedInUser?.username);
       } catch (e: unknown) {
         if (e instanceof AxiosError == false) {
           logout();
@@ -33,17 +32,14 @@ export default function useAuth() {
 
   const login = async (
     username: string,
-    password: string,
+    password: string
   ): Promise<boolean> => {
     let res;
     try {
-      const axiosResponse = await axios.post(
-        "http://localhost:8080/api/login",
-        {
-          username,
-          password,
-        },
-      );
+      const axiosResponse = await axios.post(BASE_API_URL + "/api/login", {
+        username,
+        password,
+      });
       res = axiosResponse;
     } catch (e: unknown) {
       if (e instanceof AxiosError == false) {
@@ -64,16 +60,14 @@ export default function useAuth() {
     const newToken = res.data.token;
     if (!newToken) {
       alert(
-        "An error ocurred when attempting to login. Please try again later.",
+        "An error ocurred when attempting to login. Please try again later."
       );
       return false;
     }
     localStorage.setItem("loginToken", newToken);
     setToken(newToken);
     setIsLoggedIn(true);
-    const userData = await axios.get(
-      "http://localhost:8080/api/users/" + username,
-    );
+    const userData = await axios.get(BASE_API_URL + "/api/users/" + username);
     setLoggedInUser(userData.data);
     localStorage.setItem("userData", JSON.stringify(userData.data));
     alert("Login successful!");
