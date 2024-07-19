@@ -27,13 +27,39 @@ export const GuessTable = styled.table`
   flex: 1;
 
   @media (width >= ${(props) => props.theme.breakpoints.tablet}) {
+    margin-top: 1rem;
     display: grid;
+    grid-template-columns: 1fr;
     grid-auto-flow: row;
 
-    thead {
+    thead tr {
+      align-items: center;
+    }
+
+    tbody {
+      row-gap: 0.5rem;
+    }
+
+    tr {
       display: grid;
+      width: 100%;
+      grid-auto-flow: column;
       grid-template-columns: repeat(7, 1fr);
-      grid-column: 1 / span all;
+      justify-content: center;
+      column-gap: 1rem;
+
+      td:first-of-type {
+        color: ${(props) => props.theme.colors.tx.primary};
+      }
+    }
+
+    td,
+    th {
+      font-size: 1rem;
+    }
+
+    * {
+      all: unset;
     }
   }
 
