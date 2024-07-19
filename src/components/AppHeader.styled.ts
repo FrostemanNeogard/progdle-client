@@ -10,7 +10,7 @@ export const Header = styled.header`
     justify-content: space-between;
     align-items: center;
     display: flex;
-    
+
     @media (width >= ${(props) => props.theme.breakpoints.tablet}) {
       max-width: 1400px;
       margin-inline: auto;

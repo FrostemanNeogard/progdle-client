@@ -13,7 +13,7 @@ export default function ProfilePage() {
   const [isEditMode, setIsEditMode] = useState<boolean>(false);
   const [username, setUsername] = useState<string>(userData?.username ?? "");
   const [profilePicture, setProfilePicture] = useState<string>(
-    userData?.profilePictureSrc ?? ""
+    userData?.profilePictureSrc ?? "",
   );
 
   useEffect(() => {

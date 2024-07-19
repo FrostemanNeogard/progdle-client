@@ -33,7 +33,8 @@ export default function GuessInputBar() {
       if (res.data.name == "CORRECT") {
         changeGameStatus(true);
         alert(
-          "Correct! The programming language was: " + res.data.languageData.name
+          "Correct! The programming language was: " +
+            res.data.languageData.name,
         );
         return;
       }

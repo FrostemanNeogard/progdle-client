@@ -10,66 +10,66 @@
 
 // Import Routes
 
-import { Route as rootRoute } from './routes/__root'
-import { Route as ProfileImport } from './routes/profile'
-import { Route as LeaderboardImport } from './routes/leaderboard'
-import { Route as GameImport } from './routes/game'
-import { Route as IndexImport } from './routes/index'
+import { Route as rootRoute } from "./routes/__root";
+import { Route as ProfileImport } from "./routes/profile";
+import { Route as LeaderboardImport } from "./routes/leaderboard";
+import { Route as GameImport } from "./routes/game";
+import { Route as IndexImport } from "./routes/index";
 
 // Create/Update Routes
 
 const ProfileRoute = ProfileImport.update({
-  path: '/profile',
+  path: "/profile",
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const LeaderboardRoute = LeaderboardImport.update({
-  path: '/leaderboard',
+  path: "/leaderboard",
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const GameRoute = GameImport.update({
-  path: '/game',
+  path: "/game",
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const IndexRoute = IndexImport.update({
-  path: '/',
+  path: "/",
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 // Populate the FileRoutesByPath interface
 
-declare module '@tanstack/react-router' {
+declare module "@tanstack/react-router" {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexImport
-      parentRoute: typeof rootRoute
-    }
-    '/game': {
-      id: '/game'
-      path: '/game'
-      fullPath: '/game'
-      preLoaderRoute: typeof GameImport
-      parentRoute: typeof rootRoute
-    }
-    '/leaderboard': {
-      id: '/leaderboard'
-      path: '/leaderboard'
-      fullPath: '/leaderboard'
-      preLoaderRoute: typeof LeaderboardImport
-      parentRoute: typeof rootRoute
-    }
-    '/profile': {
-      id: '/profile'
-      path: '/profile'
-      fullPath: '/profile'
-      preLoaderRoute: typeof ProfileImport
-      parentRoute: typeof rootRoute
-    }
+    "/": {
+      id: "/";
+      path: "/";
+      fullPath: "/";
+      preLoaderRoute: typeof IndexImport;
+      parentRoute: typeof rootRoute;
+    };
+    "/game": {
+      id: "/game";
+      path: "/game";
+      fullPath: "/game";
+      preLoaderRoute: typeof GameImport;
+      parentRoute: typeof rootRoute;
+    };
+    "/leaderboard": {
+      id: "/leaderboard";
+      path: "/leaderboard";
+      fullPath: "/leaderboard";
+      preLoaderRoute: typeof LeaderboardImport;
+      parentRoute: typeof rootRoute;
+    };
+    "/profile": {
+      id: "/profile";
+      path: "/profile";
+      fullPath: "/profile";
+      preLoaderRoute: typeof ProfileImport;
+      parentRoute: typeof rootRoute;
+    };
   }
 }
 
@@ -80,7 +80,7 @@ export const routeTree = rootRoute.addChildren({
   GameRoute,
   LeaderboardRoute,
   ProfileRoute,
-})
+});
 
 /* prettier-ignore-end */
 

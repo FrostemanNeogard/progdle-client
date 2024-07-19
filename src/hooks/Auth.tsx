@@ -7,7 +7,7 @@ export default function useAuth() {
   const [token, setToken] = useState<string | null>();
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [loggedInUser, setLoggedInUser] = useState<UserData | null>(
-    JSON.parse(localStorage.getItem("userData") ?? "{}")
+    JSON.parse(localStorage.getItem("userData") ?? "{}"),
   );
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export default function useAuth() {
 
   const login = async (
     username: string,
-    password: string
+    password: string,
   ): Promise<boolean> => {
     let res;
     try {
@@ -60,7 +60,7 @@ export default function useAuth() {
     const newToken = res.data.token;
     if (!newToken) {
       alert(
-        "An error ocurred when attempting to login. Please try again later."
+        "An error ocurred when attempting to login. Please try again later.",
       );
       return false;
     }

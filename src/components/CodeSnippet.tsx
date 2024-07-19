@@ -15,7 +15,7 @@ export default function CodeSnippet() {
       axios.get(
         BASE_API_URL +
           "/api/snippets/daily/" +
-          Math.min(Math.max(guesses.length - (hasWon ? 1 : 0), 0), 4)
+          Math.min(Math.max(guesses.length - (hasWon ? 1 : 0), 0), 4),
       ),
   });
 

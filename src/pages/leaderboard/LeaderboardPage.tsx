@@ -11,7 +11,9 @@ export default function LeaderboardPage() {
     axios
       .get(BASE_API_URL + "/api/users")
       .then((res) =>
-        setUsers(res.data.sort((a: UserData, b: UserData) => b.score - a.score))
+        setUsers(
+          res.data.sort((a: UserData, b: UserData) => b.score - a.score),
+        ),
       );
   }, []);
 
