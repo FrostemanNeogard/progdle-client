@@ -13,7 +13,7 @@ export const UsersList = styled.div`
     padding: 2rem;
     border-radius: 10px;
     background-color: ${(props) => props.theme.colors.bg.secondary};
-    
+
     > div {
       display: flex;
       align-items: center;
