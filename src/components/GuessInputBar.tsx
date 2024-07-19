@@ -1,7 +1,7 @@
 import { SyntheticEvent, useContext, useEffect, useState } from "react";
 import * as S from "./GuessInputBar.styled";
 import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { GameStatusContext, GuessesContext } from "../pages/root/RootPage";
 import { Guess, Language } from "../types/Guess";
 import useAuth from "../hooks/Auth";
@@ -40,6 +40,17 @@ export default function GuessInputBar() {
       if (guesses.length >= 4) {
         alert("You lose!");
       }
+    },
+    onError: (err: unknown) => {
+      if (err instanceof AxiosError == false) {
+        alert("An unknown error ocurred.");
+        return;
+      }
+      if (err.response?.status == 404) {
+        alert("Language not found.");
+        return;
+      }
+      alert("An unknown error ocurred.");
     },
   });
 
