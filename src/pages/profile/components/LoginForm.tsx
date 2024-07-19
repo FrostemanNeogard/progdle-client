@@ -25,7 +25,9 @@ export default function LoginForm() {
     const loginSuccess = await login(username, password);
     setHasLoggedIn(loginSuccess);
     setIsLoading(false);
-    window.location.reload();
+    if (loginSuccess) {
+      window.location.reload();
+    }
   };
 
   return (
