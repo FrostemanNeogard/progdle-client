@@ -5,11 +5,11 @@ export const theme = {
   },
   colors: {
     success: "#48ff38",
-    success_ts: "#48ff3850",
+    success_ts: "#48ff38",
     warning: "#ffff54",
-    warning_ts: "#ffff5450",
+    warning_ts: "#ffff54",
     danger: "#fe5353",
-    danger_ts: "#fe535350",
+    danger_ts: "#fe5353",
     bg: {
       primary: "#343434",
       secondary: "#282828",
@@ -17,7 +17,7 @@ export const theme = {
     },
     tx: {
       primary: "#f7f7f7",
-      primary_ts: "#f7f7f750",
+      primary_ts: "#f7f7f7",
       secondary: "#0f0f0f",
     },
   },
