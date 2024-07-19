@@ -34,8 +34,15 @@ export default function GamePage() {
       <GuessTable pageIndex={guessPageIndex} />
       {isMobile && (
         <S.NavBar>
-          <button onClick={decrementPageIndex}>&lt;</button>
-          <button onClick={incrementPageIndex}>&gt;</button>
+          <button onClick={decrementPageIndex} disabled={guessPageIndex == 0}>
+            &lt;
+          </button>
+          <button
+            onClick={incrementPageIndex}
+            disabled={guessPageIndex >= guesses.length - 1}
+          >
+            &gt;
+          </button>
         </S.NavBar>
       )}
       <GuessInputBar />
