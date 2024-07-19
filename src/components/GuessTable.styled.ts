@@ -32,8 +32,13 @@ export const GuessTable = styled.table`
     grid-template-columns: 1fr;
     grid-auto-flow: row;
 
+    thead, thead tr {
+      width: 100%;
+    }
+
     thead tr {
       align-items: center;
+      text-align: center;
     }
 
     tbody {
