@@ -6,6 +6,10 @@ export const GuessForm = styled.form`
   justify-content: space-between;
   column-gap: 1rem;
 
+  @media (width >= ${(props) => props.theme.breakpoints.tablet}) {
+    margin-top: auto;
+  }
+
   input,
   button {
     font-size: 1.5rem;
